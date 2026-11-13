@@ -81,6 +81,17 @@ const CLASSES: Record<string, { title: string; description: string; price: strin
   },
 };
 
+// Раздел «Стоимость» — собирается автоматически из CLASSES, цены меняй только там
+ SECTIONS.prices = {
+     button: "💰  Стоимость",
+     text:
+        "💰  <b>Стоимость занятий</b>\n\n" +
+         Object.values(CLASSES)
+         .map((c) => `<b>${c.title}</b> — ${c.price}`)
+         .join("\n") +
+         "\n\n🎁  Первая вводная встреча бесплатная.",
+          };
+
 const BOOK_TEXT = "📝 <b>Запись на занятия</b>\n\nВыберите класс:";
 
 const TRIAL_NOTE =
