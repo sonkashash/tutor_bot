@@ -218,8 +218,8 @@ const user = ctx.from; if (!adminId || !user || ctx.chat.id === adminId) return;
        "👀  <b>Кто-то зашёл в бота</b>",
         "",
         `👤  <a href="tg://user?id=${user.id}">${name}</a>`,
-         user.username ? 💬  @${user.username} : null,
-          source ? 📍  Источник: ${escapeHtml(source)} : null,
+         user.username ? `💬  @${user.username}` : null,
+          source ? `📍  Источник: ${escapeHtml(source)}` : null,
           ].filter(Boolean);
    await bot.api
     .sendMessage(adminId, lines.join("\n"), { parse_mode: "HTML", disable_notification: true })
