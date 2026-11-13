@@ -211,13 +211,13 @@ async function handleLead(user: LeadUser, classId: string, phone?: string) {
 // /start — главное меню
 bot.command("start", async (ctx) => { await ctx.reply(WELCOME, { reply_markup: menuKeyboard() });
 // Уведомление тебе, что кто-то зашёл (свои заходы не присылаем)
-const user = ctx.from; if (!adminId  !user  ctx.chat.id === adminId) return;
+const user = ctx.from; if (!adminId || !user || ctx.chat.id === adminId) return;
  const name = escapeHtml([user.first_name, user.last_name].filter(Boolean).join(" "));
   const source = ctx.match; // метка из ссылки t.me/бот?start=avito
    const lines = [
        "👀  <b>Кто-то зашёл в бота</b>",
         "",
-        👤  <a href="tg://user?id=${user.id}">${name}</a>,
+        `👤  <a href="tg://user?id=${user.id}">${name}</a>`,
          user.username ? 💬  @${user.username} : null,
           source ? 📍  Источник: ${escapeHtml(source)} : null,
           ].filter(Boolean);
